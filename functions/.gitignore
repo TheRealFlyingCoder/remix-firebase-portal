@@ -1,0 +1,5 @@
+lib/
+node_modules/
+#UNCOMMENT THIS ONCE YOU HAVE YOUR SECRET IN IT
+#.npmrc
+build

@@ -1,0 +1,11 @@
+node_modules
+functions/node_modules
+/.cache
+/build
+/server/build
+/public/build
+/app/styles
+*.log
+.idea
+#UNCOMMENT THIS ONCE YOU POPULATE IT
+#serviceAccount.json

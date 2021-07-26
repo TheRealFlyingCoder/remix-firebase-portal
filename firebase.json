@@ -1,0 +1,36 @@
+{
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs14"
+  },
+  "hosting": [
+    {
+      "site": "YOUR_SITE",
+      "public": "public",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "YOUR_APP"
+        }
+      ]
+    }
+  ],
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true,
+      "port": 5002
+    },
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8080
+    }
+  }
+}

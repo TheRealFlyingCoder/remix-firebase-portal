@@ -1,0 +1,70 @@
+<!DOCTYPE {{{ page.doctype || 'html' }}}>
+<html lang="{{ page.language || 'en' }}" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+  <meta charset="{{ page.charset || 'utf-8' }}">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings xmlns:o="urn:schemas-microsoft-com:office:office">
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <style>
+    td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family: "Segoe UI", sans-serif; mso-line-height-rule: exactly;}
+  </style>
+  <![endif]-->
+  <if condition="page.title">
+    <title>{{{ page.title }}}</title>
+  </if>
+  <if condition="page.googleFonts">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?{{{ page.googleFonts }}}&display=swap" rel="stylesheet" media="screen">
+  </if>
+  <if condition="page.css">
+    <style>{{{ page.css }}}</style>
+  </if>
+  <style data-embed>
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: inherit !important;
+    }
+  </style>
+  <block name="head"></block>
+</head>
+<body class="bg-gray-100">
+  <div role="article" aria-roledescription="email" aria-label="{{{ page.title || '' }}}" lang="{{ page.language || 'en' }}">
+    <table class="w-full all:font-lato">
+      <!-- LOGO -->
+      <tr>
+        <td align="center" class="bg-brand">
+          <!--[if (gte mso 9)|(IE)]>
+            <table align="center" cellspacing="0" cellpadding="0" style="width: 600px;">
+              <tr>
+                <td align="center" valign="top">
+                  <![endif]-->
+                  <table class="w-full max-w-600">
+                    <tr>
+                      <td align="center" class="py-40 px-10 align-top">
+                        <img src="/logo.png" alt="Logo" width="400">
+                      </td>
+                    </tr>
+                  </table>
+                  <!--[if (gte mso 9)|(IE)]>
+                </td>
+              </tr>
+            </table>
+          <![endif]-->
+        </td>
+      </tr>
+      <block name="template"></block>
+      <!-- FOOTER -->
+      <component src="src/components/html-footer.html"></component>
+    </table>
+  </div>
+</body>
+</html>

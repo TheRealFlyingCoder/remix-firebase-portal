@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "name": "remix-firebase-portal",
+  "description": "",
+  "license": "",
+  "scripts": {
+    "prebuild": "rimraf ./build ./public/build",
+    "build": "dotenv -e .env.prod yarn build:css && yarn build:emails && remix build",
+    "dev": "dotenv concurrently \"yarn watch:css\" \"remix run\" -k",
+    "dev:https": "concurrently \"yarn dev\" \"ts-node ./express/server.ts\" -k",
+    "start": "dotenv -e .env.prod remix-serve build",
+    "start:functions": "dotenv concurrently \"yarn dev\" \"yarn --cwd functions dev\" \"firebase emulators:start\"",
+    "scaffold": "ts-node-transpile-only ./tools/scaffold-component.ts",
+    "scaffold:route": "ts-node-transpile-only ./tools/scaffold-route.ts",
+    "watch:css": "tailwindcss --output ./app/styles/tailwind.css --config ./tailwind/tailwind.config.js --watch",
+    "build:css": "tailwindcss --output ./app/styles/tailwind.css --config ./tailwind/tailwind.config.js --minify",
+    "build:emails": "yarn --cwd app/server/mailer maizzle build",
+    "deploy": "dotenv -e .env.prod yarn build && firebase deploy --only hosting && yarn --cwd functions build && firebase deploy --only functions:APP_NAME"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.2.0",
+    "@heroicons/react": "^1.0.1",    
+    "@remix-run/node": "0.17.0",
+    "@remix-run/react": "0.17.0",
+    "@remix-run/serve": "0.17.0",
+    "axios": "^0.21.1",
+    "clsx": "^1.1.1",
+    "firebase": "9.0.0-beta.2",
+    "firebase-admin": "^9.100.0-alpha.0",
+    "nodemailer": "^6.6.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^6.0.0-beta.0",
+    "remix": "0.17.0",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@maizzle/cli": "^1.4.0",
+    "@maizzle/framework": "^3.6.0",
+    "@remix-run/dev": "0.17.0",
+    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/typography": "^0.4.1",
+    "@types/nodemailer": "^6.4.4",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "concurrently": "^6.2.0",
+    "dotenv-cli": "^4.0.0",
+    "express-http-proxy": "^1.6.2",
+    "prettier": "^2.3.1",
+    "tailwindcss": "^2.2.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": ">14"
+  },
+  "sideEffects": false
+}

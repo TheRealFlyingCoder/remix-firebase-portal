@@ -1,0 +1,1 @@
+type CustomSVG = (props: React.ComponentProps<'svg'>) => JSX.Element;
